@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 
 
@@ -34,6 +35,9 @@ const AddVisa = () => {
         .then(res => res.json())
         .then (data => {
             console.log(data);
+            if(data.insertId){
+                toast.success("Add a new visa successfully")
+            }
         })
     }
 

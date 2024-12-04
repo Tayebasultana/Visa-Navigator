@@ -27,7 +27,7 @@ const Login = () => {
         //  const loggedInUser = res.user; 
         
           navigate(location?.state ? location.state : "/")
-          toast.success('log in successfull')
+          toast.success('log in successfully')
        })
        .catch(err=>{
         setError(err.message)
@@ -39,7 +39,7 @@ const Login = () => {
         .then(res =>{
           
           navigate(location?.state ? location.state : "/")
-          toast.success('log in successfull')
+          toast.success('log in successfully')
         })
       }
 
