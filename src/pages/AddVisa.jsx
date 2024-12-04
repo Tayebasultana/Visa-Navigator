@@ -21,6 +21,20 @@ const AddVisa = () => {
 
         const newVisa = {image, name, type, time, document, description, age, fee, validity, method}
         console.log(newVisa);
+
+        // send data to the server
+
+        fetch('http://localhost:5000/visa',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(newVisa)
+        })
+        .then(res => res.json())
+        .then (data => {
+            console.log(data);
+        })
     }
 
 
