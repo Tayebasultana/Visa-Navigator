@@ -1,8 +1,17 @@
+import { useNavigate } from "react-router-dom";
 
 
 const VisaCard = ({visa}) => {
 
-    const {image, name, type, description, fee} = visa;
+  const navigate = useNavigate();
+  const handleGoToDetails =() => {
+    // console.log("Visa ID:", visa.id);
+    navigate(`/visa/${visa._id}`);
+  };
+
+  const {image, name, type, description, fee} = visa;
+
+    
     return (
         <div>
             <div className="card bg-base-100 object-cover shadow-xl">
@@ -20,7 +29,7 @@ const VisaCard = ({visa}) => {
                 </div>
                 <p>{description}</p>
                 <div className="card-actions">
-                  <button className="btn ">See Details</button>
+                 <button className="btn" onClick={handleGoToDetails}>See details</button>
                 </div>
               </div>
             </div>
