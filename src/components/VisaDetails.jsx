@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const VisaDetails = () => {
@@ -19,6 +20,23 @@ const VisaDetails = () => {
 
         const myVisa = {email, firstName, lastName, time, fee}
         console.log(myVisa);
+
+
+
+        fetch('http://localhost:5000/my-visa',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(myVisa)
+        })
+        .then(res => res.json())
+        .then (data => {
+            console.log(data);
+            if(data.insertId){
+                toast.success("Add my visa successfully")
+            }
+        })
    }
 
 
