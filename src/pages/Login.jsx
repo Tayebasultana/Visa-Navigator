@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { authContext } from "../components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -27,7 +28,10 @@ const Login = () => {
         //  const loggedInUser = res.user; 
         
           navigate(location?.state ? location.state : "/")
-          toast.success('log in successfully')
+          Swal.fire({
+            text: "Log in successfully!",
+            icon: "success",
+          });
        })
        .catch(err=>{
         setError(err.message)
@@ -39,7 +43,10 @@ const Login = () => {
         .then(res =>{
           
           navigate(location?.state ? location.state : "/")
-          toast.success('log in successfully')
+          Swal.fire({
+            text: "Log in successfully!",
+            icon: "success",
+          });
         })
       }
 
@@ -47,21 +54,11 @@ const Login = () => {
 
 
     return (
-        <div className=" md:my-7 lg:my-36 px-7 max-w-md space-y-4  mx-auto">
-            {/* <div className="absolute  flex justify-center items-center z-0">
-              <div className="animate-snow fall">
-                <div className="snowflake">&#10052;</div>
-                <div className="snowflake">&#10052;</div>
-                <div className="snowflake">&#10052;</div>
-              </div>
-           </div> */}
-
-           <div className="absolute -top-10 -left-10 w-60 h-60 bg-blue-200 opacity-10 rounded-full"></div>
-           <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-indigo-400 opacity-20 rounded-full"></div>
+        <div className=" md:my-7 lg:my-36 px-7 max-w-md space-y-4 bg-black p-7  mx-auto">
            
            <form action="" onSubmit={handleSubmit}>
            <div className="max-w-md space-y-4 mx-auto">
-            <h2 className="text-center text-3xl font-bold text-blue-950 ">Login</h2>
+            <h2 className="text-center text-3xl font-bold text-emerald-600 ">Login</h2>
             
             <label className="input input-bordered flex items-center gap-2">
                <svg
@@ -91,16 +88,16 @@ const Login = () => {
                <input type="password" name="password" className="grow" placeholder="password" required/>
              </label>
              <div className=" text-right">
-             <NavLink to="/forgetPassword" className="font-bold text-blue-900">Forget Password ? </NavLink>
+             <NavLink to="/forgetPassword" className="font-bold text-emerald-600">Forget Password ? </NavLink>
              </div>
-            <button type="submit" className="btn w-full text-white text-bold text-lg bg-blue-950">Login</button>
+            <button type="submit" className="btn w-full text-white text-bold text-lg bg-emerald-600 border-none">Login</button>
         </div>
            </form>
            <div className="text-center ">
             <h4 className="mb-2">Or</h4>
-            <button onClick={googleLoginHandler} className="btn w-full text-base bg-transparent border-2 border-blue-950 hover:bg-blue-950 hover:text-white hover:border-none mb-4">Log in with Google</button>
+            <button onClick={googleLoginHandler} className="btn w-full text-white bg-emerald-600 border-2 border-none hover:bg-emerald-600 hover:text-white hover:border-none mb-4">Log in with Google</button>
            </div>
-           New to the website ?  <NavLink to="/register" className="text-blue-950 text-base font-bold">Register</NavLink>
+           New to the website ?  <NavLink to="/register" className="text-emerald-600 text-base font-bold">Register</NavLink>
            {error?<p className="mt-2 text-red-500">{error}</p>:''}
         </div>
     );

@@ -7,7 +7,7 @@ const Navbar = () => {
     const {user, handleLogout} = useContext(authContext)
 
     return (
-        <div className="navbar bg-blue-950 text-white px-2 md:px-7 lg:px-24 mx-auto">
+        <div className="navbar bg-gradient-to-r from-[#031716] via-[#0A7075] to-[#031716] text-white px-2 md:px-7 lg:px-24 mx-auto">
   <div className="navbar-start">
 
   <div className="navbar-center md:navbar-center lg:navbar-start">
@@ -33,10 +33,11 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-gray-500">
-        <NavLink to="/" className={({ isActive }) => isActive? "text-blue-500" : ""}>Home</NavLink>
-        <NavLink to="/all-visa" className={({ isActive }) => isActive? "text-blue-500" : ""}>All-visas</NavLink>
-        <NavLink to ="/add-visa" className={({ isActive }) => isActive? "text-blue-500" : ""}>Add-visa</NavLink>
-        <NavLink to="/my-visa" className={({ isActive }) => isActive? "text-blue-500" : ""}>My-visa</NavLink>
+        <NavLink to="/" className={({ isActive }) => isActive? "text-black" : ""}>Home</NavLink>
+        <NavLink to="/all-visa" className={({ isActive }) => isActive? "text-black" : ""}>All-visas</NavLink>
+        <NavLink to ="/add-visa" className={({ isActive }) => isActive? "text-black" : ""}>Add-visa</NavLink>
+        <NavLink to ="/my-added-visas" className={({ isActive }) => isActive? "text-black" : ""}>My added visas</NavLink>
+        <NavLink to="/my-visa" className={({ isActive }) => isActive? "text-black" : ""}>My Visa applications</NavLink>
       </ul>
     </div>
   </div>
@@ -44,10 +45,11 @@ const Navbar = () => {
 
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 gap-7">
-    <NavLink to="/" className={({ isActive }) => isActive? "text-blue-500" : ""}>Home</NavLink>
-    <NavLink to="/all-visa" className={({ isActive }) => isActive? "text-blue-500" : ""}>All-visas</NavLink>
-    <NavLink to ="/add-visa" className={({ isActive }) => isActive? "text-blue-500" : ""}>Add-visa</NavLink>
-    <NavLink to="/my-visa" className={({ isActive }) => isActive? "text-blue-500" : ""}>My-visa</NavLink>
+    <NavLink to="/" className={({ isActive }) => isActive? "text-black" : ""}>Home</NavLink>
+    <NavLink to="/all-visa" className={({ isActive }) => isActive? "text-black" : ""}>All-visas</NavLink>
+    <NavLink to ="/add-visa" className={({ isActive }) => isActive? "text-black" : ""}>Add-visa</NavLink>
+    <NavLink to ="/my-added-visas" className={({ isActive }) => isActive? "text-black" : ""}>My added visas</NavLink>
+    <NavLink to="/my-visa" className={({ isActive }) => isActive? "text-black" : ""}>My Visa applications</NavLink>
     </ul>
   </div>
 
@@ -56,7 +58,6 @@ const Navbar = () => {
   {
     user?.email ? 
     (<div className="flex gap-2 items-center">
-      {/* https://unsplash.com/photos/white-rose-enclosed-photograph-pDGNBK9A0sk */}
       <img src={user.photoURL} alt="" className="rounded-full w-10 h-10"/>
       <button onClick={handleLogout} className="btn px-7 font-bold text-blue-950">log out</button>
     </div>) : 

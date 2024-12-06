@@ -29,7 +29,7 @@ const VisaCard = ({visa}) => {
                 </div>
                 <p>{description}</p>
                 <div className="card-actions">
-                 <button className="btn" onClick={handleGoToDetails}>See details</button>
+                 <button className="btn bg-gradient-to-r from-[#031716] via-[#0A7075] to-[#031716] text-white" onClick={handleGoToDetails}>See details</button>
                 </div>
               </div>
             </div>

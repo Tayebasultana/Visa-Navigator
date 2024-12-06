@@ -59,7 +59,7 @@
     height: 10px;
     width: 10px;
     margin: 0 5px;
-    background-color: #0056b3;
+    background-color: #0A7075;
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
@@ -68,11 +68,11 @@
 }
 
 .dot.active {
-    background-color: #007bff;
+    background-color: #031716;
 }
 
 .dot:hover {
-    background-color: #0056b3;
+    background-color:#0a7075da ;
 }
 
 .slide-overlay {
@@ -99,7 +99,7 @@
 
 .slider-button {
     padding: 10px 20px;
-    background-color: #007bff;
+    
     color: white;
     border: none;
     border-radius: 5px;
@@ -107,7 +107,5 @@
     transition: background-color 0.3s ease;
 }
 
-.slider-button:hover {
-    background-color: #0056b3;
-}
+
 

@@ -8,6 +8,8 @@ import Home from "../pages/Home";
 import AllVisa from "../pages/AllVisa";
 import MyVisa from "../pages/MyVisa";
 import VisaDetails from "../components/VisaDetails";
+import MyAddedVisas from "../pages/MyAddedVisas";
+import PrivetRoute from "../components/PrivetRoute/PrivetRoute";
 
 
 const router = createBrowserRouter([
@@ -26,15 +28,28 @@ const router = createBrowserRouter([
             },
             {
                 path:"/add-visa",
-                element:<AddVisa></AddVisa>
+                element:<PrivetRoute>
+                    <AddVisa></AddVisa>
+                </PrivetRoute>,
+            },
+            {
+               path:"/my-added-visas",
+               element:<PrivetRoute>
+                <MyAddedVisas></MyAddedVisas>
+               </PrivetRoute>,
             },
             {
                 path:"/my-visa",
-                element:<MyVisa></MyVisa>
+                element:<PrivetRoute>
+                    <MyVisa></MyVisa>
+                </PrivetRoute>,
+                loader: () => fetch("http://localhost:5000/my-visa"),
             },
             {
                 path:"/visa/:id",
-                element:<VisaDetails></VisaDetails>,
+                element:<PrivetRoute>
+                    <VisaDetails></VisaDetails>
+                </PrivetRoute>,
                 loader:({params}) => fetch(`http://localhost:5000/visa/${params.id}`)
             }
         ]

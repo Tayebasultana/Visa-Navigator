@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
 
     const [error, setError] = useState('');
-const {handleRegister,manageProfile} = useContext(authContext) 
+const {handleRegister} = useContext(authContext) 
 const navigate =useNavigate()
 const location = useLocation()
 
@@ -34,8 +35,12 @@ const handleSubmit = (e) => {
 
    handleRegister(email, password)
    .then(res=>{
-    manageProfile(name,image)
+    // manageProfile(name,image)
     navigate(location?.state ? location.state : "/")
+    Swal.fire({
+      text: "Sign up successfully!",
+      icon: "success",
+    });
    })
    .catch(err=>{
     setError(err.message)
@@ -46,21 +51,13 @@ const handleSubmit = (e) => {
 
     return (
         <>
-           <div className="mt-[50%] md:my-7 lg:my-36 px-7 max-w-md space-y-4 mx-auto">
-           {/* <div className="absolute inset-0 flex justify-center items-center z-0">
-              <div className="animate-snow fall">
-                <div className="snowflake">&#10052;</div>
-                <div className="snowflake">&#10052;</div>
-                <div className="snowflake">&#10052;</div>
-              </div>
-           </div> */}
+           <div className="mt-[50%] md:my-7 lg:my-36 px-7 max-w-md space-y-4 bg-black p-7 mx-auto">
            
-           <div className="absolute -top-10 -left-10 w-60 h-60 bg-blue-200 opacity-10 rounded-full"></div>
-           <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-indigo-400 opacity-20 rounded-full"></div>
+           
            
            <form action="" onSubmit={handleSubmit}>
            <div className="max-w-md space-y-4 mb-2 mx-auto">
-            <h2 className="text-center text-3xl font-bold text-blue-950 ">Register</h2>
+            <h2 className="text-center text-3xl font-bold text-emerald-600 ">Register</h2>
             <label className="input input-bordered flex items-center gap-2">
                <svg
                  xmlns="http://www.w3.org/2000/svg"
@@ -112,10 +109,10 @@ const handleSubmit = (e) => {
                </svg>
                <input type="password" name="password" className="grow" placeholder="password" required/>
              </label>
-            <button type="submit" className="btn w-full text-white text-bold text-lg bg-blue-950">Register</button>
+            <button type="submit" className="btn w-full text-white text-bold text-lg bg-emerald-600">Register</button>
         </div>
            </form>
-           Already have an account? <NavLink to="/login" className="text-base text-blue-950 font-bold">Login</NavLink>
+           <span className="text-white">Already have an account? </span> <NavLink to="/login" className="text-base text-emerald-600 font-bold">Login</NavLink>
            {error?<p className="mt-2 text-red-500">{error}</p>:''}
            </div>
         </>

@@ -62,7 +62,7 @@ const Banner = () => {
              <div className="slide-overlay">
              <h2 className={`font-bold ${slides[currentIndex].isBig ? "text-5xl pt-24 pb-4" : "text-3xl"}`}>{slides[currentIndex].title}</h2>
                <p className={`${slides[currentIndex].isBig ? " pb-4" : ""}`}>{slides[currentIndex].description}</p>
-               <button className="slider-button">{slides[currentIndex].buttonText}</button>
+               <button className="slider-button bg-black hover:bg-emerald-700">{slides[currentIndex].buttonText}</button>
              </div>
 
     
