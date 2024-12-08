@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { authContext } from "./AuthProvider/AuthProvider";
+import plane from "../assets/rb_731.png";
 
 
 const Navbar = () => {
     const {user, handleLogout} = useContext(authContext)
 
     return (
-        <div className="navbar bg-gradient-to-r from-[#031716] via-[#0A7075] to-[#031716] text-white px-2 md:px-7 lg:px-24 mx-auto">
+       <div className="relative">
+      <div><img src={plane} alt="" className="h-24 absolute left-64 -top-2"/></div>
+
+<div className="navbar bg-gradient-to-r from-[#031716] via-[#0A7075] to-[#031716] text-white px-2 md:px-7 lg:px-24 mx-auto">
   <div className="navbar-start">
 
   <div className="navbar-center md:navbar-center lg:navbar-start">
@@ -32,12 +36,12 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-gray-500">
+        className="menu menu-sm dropdown-content bg-gradient-to-r from-[#031716] via-[#0A7075] to-[#031716] text-white rounded-box z-[1] mt-3 w-52 p-2 shadow ">
         <NavLink to="/" className={({ isActive }) => isActive? "text-black" : ""}>Home</NavLink>
         <NavLink to="/all-visa" className={({ isActive }) => isActive? "text-black" : ""}>All-visas</NavLink>
         <NavLink to ="/add-visa" className={({ isActive }) => isActive? "text-black" : ""}>Add-visa</NavLink>
         <NavLink to ="/my-added-visas" className={({ isActive }) => isActive? "text-black" : ""}>My added visas</NavLink>
-        <NavLink to="/my-visa" className={({ isActive }) => isActive? "text-black" : ""}>My Visa applications</NavLink>
+        <NavLink to={`/my-visa/${user?.email}`} className={({ isActive }) => isActive? "text-black" : ""}>My Visa applications</NavLink>
       </ul>
     </div>
   </div>
@@ -49,7 +53,7 @@ const Navbar = () => {
     <NavLink to="/all-visa" className={({ isActive }) => isActive? "text-black" : ""}>All-visas</NavLink>
     <NavLink to ="/add-visa" className={({ isActive }) => isActive? "text-black" : ""}>Add-visa</NavLink>
     <NavLink to ="/my-added-visas" className={({ isActive }) => isActive? "text-black" : ""}>My added visas</NavLink>
-    <NavLink to="/my-visa" className={({ isActive }) => isActive? "text-black" : ""}>My Visa applications</NavLink>
+    <NavLink to={`/my-visa/${user?.email}`} className={({ isActive }) => isActive? "text-black" : ""}>My Visa applications</NavLink>
     </ul>
   </div>
 
@@ -69,6 +73,7 @@ const Navbar = () => {
   }
   </div>
         </div>
+       </div>
     );
 };
 

@@ -10,16 +10,20 @@ import MyVisa from "../pages/MyVisa";
 import VisaDetails from "../components/VisaDetails";
 import MyAddedVisas from "../pages/MyAddedVisas";
 import PrivetRoute from "../components/PrivetRoute/PrivetRoute";
+import ErrorPage from "../components/ErrorPage";
+import Update from "../components/Update";
 
 
 const router = createBrowserRouter([
     {
         path:"/",
         element:<MainLayout></MainLayout>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                path:"/",
-               element:<Home></Home>
+               element:<Home></Home>,
+               loader: () => fetch('http://localhost:5000/visa'),
             },
             {
                 path:"/all-visa",
@@ -37,13 +41,19 @@ const router = createBrowserRouter([
                element:<PrivetRoute>
                 <MyAddedVisas></MyAddedVisas>
                </PrivetRoute>,
+            //    loader:({params}) => fetch(`http://localhost:5000/my-added-visa?email=${user.email}`)
             },
             {
-                path:"/my-visa",
+                path:"/my-visa/:email",
                 element:<PrivetRoute>
                     <MyVisa></MyVisa>
                 </PrivetRoute>,
-                loader: () => fetch("http://localhost:5000/my-visa"),
+                // loader: () => fetch("http://localhost:5000/my-visa"),
+            },
+            {
+                path:"/update/:id",
+                element:<Update></Update>,
+                loader: ({params}) => fetch(`http://localhost:5000/visa/${params.id}`)
             },
             {
                 path:"/visa/:id",

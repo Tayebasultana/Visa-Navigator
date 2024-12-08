@@ -1,45 +1,60 @@
-import { toast } from "react-toastify";
 
+import Swal from "sweetalert2";
+import { authContext } from "../components/AuthProvider/AuthProvider";
+import { useContext, useState } from "react";
 
 
 const AddVisa = () => {
+  const { user } = useContext(authContext); 
+  // const [visas, setVisas] = useState(newVisa)
+    
+   const email = user.email
+   console.log(email)
 
-    const handleAddVisa = (e) =>{
-        e.preventDefault()
 
-        const form = e.target;
 
-        const image = form.image.value;
-        const name = form.name.value;
-        const type = form.type.value;
-        const time = form.time.value;
-        const document = form.document.value;
-        const description = form.description.value;
-        const age = form.age.value;
-        const fee = form.fee.value;
-        const validity = form.validity.value;
-        const method = form.method.value;
+  const handleAddVisa = (e) => {
+    e.preventDefault();
 
-        const newVisa = {image, name, type, time, document, description, age, fee, validity, method}
-        console.log(newVisa);
 
-        // send data to the server
+    const form = e.target;
 
-        fetch('http://localhost:5000/visa',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
-            },
-            body:JSON.stringify(newVisa)
-        })
-        .then(res => res.json())
-        .then (data => {
-            console.log(data);
-            if(data.insertId){
-                toast.success("Add a new visa successfully")
-            }
-        })
-    }
+    const image = form.image.value;
+    const name = form.name.value;
+    const type = form.type.value;
+    const time = form.time.value;
+    const document = form.document.value;
+    const description = form.description.value;
+    const age = form.age.value;
+    const fee = form.fee.value;
+    const validity = form.validity.value;
+    const method = form.method.value;
+
+    const newVisa = { image, name, type, time, document, description, age, fee, validity, method, email};
+
+    
+    fetch('http://localhost:5000/my-added-visa', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(newVisa),
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        if (data.insertId) {
+            
+            const visaUid = data.insertId;
+            Swal.fire({
+              text: "Visa added successfully!" + visaUid,
+              icon: "success"
+            });
+            form.reset();
+        }
+    })
+}
+
 
 
     return (
@@ -130,6 +145,8 @@ const AddVisa = () => {
              </div>
              <input type="text" name="method" placeholder="Application method" className="input input-bordered border-emerald-900 border-2 grow w-full" />
            </label>
+
+
              
              
             <button type="submit" className="btn w-3/4 text-white text-bold text-lg bg-gradient-to-r from-[#031716] via-[#0A7075] to-[#031716] col-span-2 mx-auto mb-7">Add Visa</button>

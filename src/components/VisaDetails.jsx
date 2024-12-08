@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 
 const VisaDetails = () => {
-    const {image, name, type} = useLoaderData();
+    const {image, name, type, document, description, validity, method} = useLoaderData();
     const {user} = useContext(authContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -22,9 +22,10 @@ const VisaDetails = () => {
         const lastName = form.lastName.value;
         const time = form.time.value;
         const fee = form.fee.value;
+        // const application = { image, name, type, document, description, validity, method}
         
 
-        const myVisa = {email, firstName, lastName, time, fee}
+        const myVisa = {email, firstName, lastName, time, fee, image, name, type, document, description, validity, method }
         console.log(myVisa);
 
 
@@ -114,6 +115,7 @@ const VisaDetails = () => {
         dateFormat="yyyy-MM-dd"
         className="input input-bordered border-emerald-900 border-2 grow w-full"
         placeholderText="Select Applied Date"
+        name="time"
       />
     </label>
 
