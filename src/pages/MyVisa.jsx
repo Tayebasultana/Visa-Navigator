@@ -14,12 +14,12 @@ const MyVisa = () => {
     
     if (user && user.email) {
       setEmail(user.email);  
-    console.log(user.email)
+    // console.log(user.email)
       
-      fetch(`http://localhost:5000/my-visa/${user.email}`)
+      fetch(`https://assignment-ten-server-eight-cyan.vercel.app/my-visa/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           setMyVisa(data); 
         })
         .catch((error) => {

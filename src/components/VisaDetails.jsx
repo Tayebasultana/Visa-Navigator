@@ -26,11 +26,11 @@ const VisaDetails = () => {
         
 
         const myVisa = {email, firstName, lastName, time, fee, image, name, type, document, description, validity, method }
-        console.log(myVisa);
+        // console.log(myVisa);
 
 
 
-        fetch('http://localhost:5000/my-visa',{
+        fetch('https://assignment-ten-server-eight-cyan.vercel.app/my-visa',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -39,7 +39,7 @@ const VisaDetails = () => {
         })
         .then(res => res.json())
         .then (data => {
-            console.log(data);
+            // console.log(data);
             if(data.insertId){
               Swal.fire({
                 text: "Visa applied successfully!",

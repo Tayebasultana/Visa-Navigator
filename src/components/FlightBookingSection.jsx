@@ -22,7 +22,7 @@ const FlightBookingSection = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch("http://localhost:5000/api/book-flight", {
+      const response = await fetch("https://assignment-ten-server-eight-cyan.vercel.app/api/book-flight", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

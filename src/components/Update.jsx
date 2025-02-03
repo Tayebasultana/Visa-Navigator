@@ -32,7 +32,7 @@ const Update = () => {
 
         const updatedVisa = {image, name, type, email, time, document, description, fee, validity, method}
 
-        fetch(`http://localhost:5000/my-added-visa/${loadedVisa._id}`,{
+        fetch(`https://assignment-ten-server-eight-cyan.vercel.app/my-added-visa/${loadedVisa._id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -41,7 +41,7 @@ const Update = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if (data.modifiedCount > 0) {
                 Swal.fire({
                     title: "Updated!",

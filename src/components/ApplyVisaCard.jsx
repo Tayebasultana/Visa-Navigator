@@ -6,7 +6,7 @@ const ApplyVisaCard = ({visa}) => {
   const  {email, firstName, lastName, time, fee, image, name, type, document, description, validity, method } = visa
 
   const handleCancel = _id =>{
-    console.log(_id);
+    // console.log(_id);
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -17,12 +17,12 @@ const ApplyVisaCard = ({visa}) => {
         confirmButtonText: "Yes, cancel it!"
       }).then((result) => {
         if (result.isConfirmed){
-            fetch(`http://localhost:5000/my-visa/${_id}`,{
+            fetch(`https://assignment-ten-server-eight-cyan.vercel.app/my-visa/${_id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.deleteCount > 0) {
                     Swal.fire({
                         title: "Canceled!",

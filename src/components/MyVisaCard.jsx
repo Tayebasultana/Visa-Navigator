@@ -15,7 +15,7 @@ const MyVisaCard = ({visa}) => {
     const { image, name, type, description, fee} = visa;
     
     const handleDelete = _id => {
-        console.log(_id);
+        // console.log(_id);
 
         Swal.fire({
             title: "Are you sure?",
@@ -29,12 +29,12 @@ const MyVisaCard = ({visa}) => {
             if (result.isConfirmed) {
               
 
-            fetch(`http://localhost:5000/my-added-visa/${_id}`,{
+            fetch(`https://assignment-ten-server-eight-cyan.vercel.app/my-added-visa/${_id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.deleteCount > 0) {
                     Swal.fire({
                         title: "Deleted!",

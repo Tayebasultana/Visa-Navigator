@@ -23,12 +23,12 @@ const router = createBrowserRouter([
             {
                path:"/",
                element:<Home></Home>,
-               loader: () => fetch('http://localhost:5000/visa'),
+               loader: () => fetch('https://assignment-ten-server-eight-cyan.vercel.app/visa'),
             },
             {
                 path:"/all-visa",
                 element:<AllVisa></AllVisa>,
-                loader: () => fetch('http://localhost:5000/visa'),
+                loader: () => fetch('https://assignment-ten-server-eight-cyan.vercel.app/visa'),
             },
             {
                 path:"/add-visa",
@@ -41,26 +41,26 @@ const router = createBrowserRouter([
                element:<PrivetRoute>
                 <MyAddedVisas></MyAddedVisas>
                </PrivetRoute>,
-            //    loader:({params}) => fetch(`http://localhost:5000/my-added-visa?email=${user.email}`)
+            //    loader:({params}) => fetch(`https://assignment-ten-server-eight-cyan.vercel.app/my-added-visa?email=${user.email}`)
             },
             {
                 path:"/my-visa/:email",
                 element:<PrivetRoute>
                     <MyVisa></MyVisa>
                 </PrivetRoute>,
-                // loader: () => fetch("http://localhost:5000/my-visa"),
+                // loader: () => fetch("https://assignment-ten-server-eight-cyan.vercel.app/my-visa"),
             },
             {
                 path:"/update/:id",
                 element:<Update></Update>,
-                loader: ({params}) => fetch(`http://localhost:5000/visa/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-ten-server-eight-cyan.vercel.app/visa/${params.id}`)
             },
             {
                 path:"/visa/:id",
                 element:<PrivetRoute>
                     <VisaDetails></VisaDetails>
                 </PrivetRoute>,
-                loader:({params}) => fetch(`http://localhost:5000/visa/${params.id}`)
+                loader:({params}) => fetch(`https://assignment-ten-server-eight-cyan.vercel.app/visa/${params.id}`)
             }
         ]
     },

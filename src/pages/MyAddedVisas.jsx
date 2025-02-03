@@ -15,7 +15,7 @@ const MyAddedVisas = () => {
       setEmail(user.email);  
 
       
-      fetch(`http://localhost:5000/my-added-visa?email=${user.email}`)
+      fetch(`https://assignment-ten-server-eight-cyan.vercel.app/my-added-visa?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setVisaData(data); 

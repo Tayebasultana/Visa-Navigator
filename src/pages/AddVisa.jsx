@@ -9,7 +9,7 @@ const AddVisa = () => {
   // const [visas, setVisas] = useState(newVisa)
     
    const email = user.email
-   console.log(email)
+  //  console.log(email)
 
 
 
@@ -33,7 +33,7 @@ const AddVisa = () => {
     const newVisa = { image, name, type, time, document, description, age, fee, validity, method, email};
 
     
-    fetch('http://localhost:5000/my-added-visa', {
+    fetch('https://assignment-ten-server-eight-cyan.vercel.app/my-added-visa', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -42,7 +42,7 @@ const AddVisa = () => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         if (data.insertId) {
             
             const visaUid = data.insertId;
